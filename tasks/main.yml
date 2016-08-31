@@ -1,0 +1,28 @@
+---
+- name: Set MOTD
+  template: src=files/etc/update.motd.d/10-help-text.j2 dest=/etc/update-motd.d/10-help-text mode=u=rwx,g=rx,o=rx
+  become: true
+  tags:
+   - logging
+
+- name: Set RSYSLOG Rsyslog
+  template: src=files/etc/rsyslog.j2 dest=/etc/rsyslog.conf
+  become: true
+  tags:
+   - logging
+
+- name: Rsyslog - Useraudit config step 1
+  template: src=files/etc/rsyslog.d/45-useraudit.j2 dest=/etc/rsyslog.d/45-useraudit.conf
+  become: true
+  tags:
+   - logging
+
+- name: Rsyslog - Useraudit config step 2
+  template: src=files/etc/rsyslog.d/45-useraudit.j2 dest=/etc/rsyslog.d/45-useraudit.conf
+  become: true
+  tags:
+   - logging
+- name: Useraudit process profiles
+  script: files/bash_audit.sh
+  tags:
+    - logging

@@ -1,0 +1,4 @@
+$RepeatedMsgReduction offimestamps
+$ActionFileDefaultTemplate RSYSLOG_FileFormat
+if $syslogfacility-text == 'user' and $syslogseverity-text == 'info' and $syslogtag startswith '[audit' then /var/log/useraudit.log
+& ~

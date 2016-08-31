@@ -1,0 +1,16 @@
+$ModLoad imuxsock # provides support for local system logging
+$ModLoad imklog   # provides kernel logging support
+$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+$FileOwner syslog
+$FileGroup adm
+$FileCreateMode 0640
+$DirCreateMode 0755
+$Umask 0022
+$PrivDropToUser syslog
+$PrivDropToGroup syslog
+$WorkDirectory /var/spool/rsyslog
+$IncludeConfig /etc/rsyslog.d/*.conf
+$template GRAYLOGRFC5424,"<%PRI%>%PROTOCOL-VERSION% %TIMESTAMP:::date-rfc3339% %HOSTNAME% %APP-NAME% %PROCID% %MSGID% %STRUCTURED-DATA% %msg%n"
+$ActionFileDefaultTemplate RSYSLOG_FileFormat
+$SystemLogRateLimitInterval 0
+*.* @{{RSYSLOGSERVER}}:514;GRAYLOGRFC5424
