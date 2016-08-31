@@ -27,3 +27,8 @@
   script: files/bash_audit.sh
   tags:
     - logging
+
+- name: install/verify ACCT
+  apt: state=latest name={{ item }}
+  with_items:
+    - acct
