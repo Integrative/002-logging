@@ -17,7 +17,7 @@
   tags:
    - logging
 
-- name: Rsyslog - Useraudit config step 2ssh 
+- name: Rsyslog - Useraudit config step 2
   template: src=files/etc/bash_audit dest=/etc/bash_audit
   become: true
   tags:
