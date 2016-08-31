@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: "J.Kool"
+  description: Audit logging for Ubuntu
+  company: Integrative Global Ltd
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+  galaxy_tags:
+    - system
+    - installer
+    - syslog
+dependencies: []
